@@ -1,17 +1,23 @@
-// const { AuthenticationError } = require("apollo-server-express");
-const { Ingredients, Cocktails } = require("../models");
+const { Ingredients, Cocktails, Liquor } = require("../models");
 
 const resolvers = {
   Query: {
-    findAll: async (parent, args) => {
+    ingredients: async (parent, args) => {
       const allIngredients = await Ingredients.find();
       console.log(allIngredients);
       return allIngredients;
     },
 
-    // add other queries here
-    findCocktails: async (parent, args) => {
-      const allCocktails = await Cocktails.find();
+    liquor: async (parent, args) => {
+      const allLiquor = await Liquor.find();
+      console.log(allLiquor);
+      return allLiquor;
+    },
+
+    cocktails: async (parent, args) => {
+      const allCocktails = await Cocktails.find()
+        .populate("base")
+        .populate("ingredients");
       console.log(allCocktails);
       return allCocktails;
     },

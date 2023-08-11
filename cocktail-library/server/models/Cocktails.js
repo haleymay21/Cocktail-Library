@@ -9,32 +9,28 @@ const cocktailsSchema = new Schema(
     created: {
       type: String,
     },
-    mainSpirit: {
+    base: [{
+      type: Schema.Types.ObjectId,
+      ref:"liquor"
+    }],
+    ingredients: [{
+      type: Schema.Types.ObjectId,
+      ref:"ingredients"
+    }],
+    build: {
       type: String,
     },
-    stirredBoozy: {
-      type: Boolean,
-    },
-    fruity: {
-      type: Boolean,
-    },
-    citrusRefreshing: {
-      type: Boolean,
-    },
-    bitter: {
-      type: Boolean,
-    },
-    smokey: {
-      type: Boolean,
-    },
-    glassware: {
+    glassIce: {
       type: String,
     },
-    shaken: {
+    garnish: {
+      type: String,
+    },
+    lowABV: {
       type: Boolean,
     },
-    stirred: {
-      type: Boolean,
+    recipe: {
+      type: String,
     },
   },
   {
@@ -43,5 +39,7 @@ const cocktailsSchema = new Schema(
     },
   }
 );
+
 const Cocktails = model("cocktails", cocktailsSchema);
+
 module.exports = Cocktails;

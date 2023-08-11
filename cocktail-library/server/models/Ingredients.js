@@ -2,12 +2,13 @@ const { Schema, model } = require("mongoose");
 
 const ingredientsSchema = new Schema(
   {
+    name: {
+      type: String,
+    },
     typeOf: {
       type: String,
-      required: true,
     },
   },
-  // set this to use virtual below
   {
     toJSON: {
       virtuals: true,
@@ -15,6 +16,6 @@ const ingredientsSchema = new Schema(
   }
 );
 
-const Ingredients = model("Ingredients", ingredientsSchema);
+const Ingredients = model("ingredients", ingredientsSchema);
 
 module.exports = Ingredients;

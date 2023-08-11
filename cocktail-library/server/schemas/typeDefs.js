@@ -7,26 +7,30 @@ const typeDefs = gql`
     typeOf: String
   }
 
+  type Liquor {
+    _id: ID
+    name: String
+    typeOf: String
+  }
+
   type Cocktails {
     _id: ID
     name: String
     created: String
-    mainSpirit: String
-    stirredBoozy: Boolean
-    fruity: Boolean
-    citrusRefreshing: Boolean
-    bitter: Boolean
-    smokey: Boolean
-    glassware: String
-    shaken: Boolean
-    stirred: Boolean
+    base: [Liquor]
+    ingredients: [Ingredients]
+    build: String
+    glassIce: String
+    garnish: String
+    lowABV: Boolean
+    recipe: String
   }
 
-  // type Query {
-  //   me: User
-  //   findAll: [Ingredients]
-  //   findCocktails: [Cocktails]
-  // }
+  type Query {
+    ingredients: [Ingredients]
+    cocktails: [Cocktails]
+    liquor: [Liquor]
+  }
 `;
 
 module.exports = typeDefs;

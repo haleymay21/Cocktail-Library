@@ -1,3 +1,5 @@
 const Ingredients = require("./Ingredients");
 const Cocktails = require("./Cocktails");
-module.exports = { Ingredients, Cocktails };
+const Liquor = require("./Liquor");
+
+module.exports = { Ingredients, Cocktails, Liquor };
