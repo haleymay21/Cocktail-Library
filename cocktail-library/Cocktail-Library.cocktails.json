@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "64d2e39e48be6fb250bc341c"
+  },
+  "name": "Old Fashioned",
+  "created": "1888",
+  "build": "stir",
+  "garnish": "orange twist",
+  "lowABV": false,
+  "recipe": "2oz Spirit, Barspoon Demerara Syrup, 2 dash Angostura, 1 dash Orange Bitters",
+  "glassIce": "rocks w/ cube"
+},
+{
+  "_id": {
+    "$oid": "64d2e39e48be6fb250bc341d"
+  },
+  "name": "Clover Club",
+  "created": "1909, Philadelphia, PA",
+  "build": "Dry & Wet Shake",
+  "garnish": null,
+  "lowABV": false,
+  "recipe": "1.5oz London Dry Gin, .75oz Lemon Juice, .5oz Dry Vermouth, .5oz Egg White, Barspoon Rich Simple",
+  "glassIce": "Coupe"
+},
+{
+  "_id": {
+    "$oid": "64d2e39e48be6fb250bc341e"
+  },
+  "name": "Paper Plane",
+  "created": "2007, Sam Ross, Violet Hour",
+  "build": "Shake",
+  "garnish": null,
+  "lowABV": false,
+  "recipe": ".75oz Bourbon, .75oz Aperol, .75oz Amaro Nonino, .75oz Lemon Juice",
+  "glassIce": "Coupe"
+},
+{
+  "_id": {
+    "$oid": "64d2e39e48be6fb250bc341f"
+  },
+  "name": "Negroni",
+  "created": "1945",
+  "build": "Short Stir",
+  "garnish": "Orange Twist",
+  "lowABV": false,
+  "recipe": "1oz Gin, 1oz Campari, 1oz Sweet Vermouth",
+  "glassIce": "Rocks w/ cube or Coupe"
+},
+{
+  "_id": {
+    "$oid": "64d2e39e48be6fb250bc3420"
+  },
+  "name": "Jungle Bird",
+  "created": null,
+  "build": "Shake",
+  "garnish": null,
+  "lowABV": false,
+  "recipe": "1.5oz Black Rum, 1.5oz Pineapple Juice, .75oz Campari, .5oz Lime Juice, .5oz Rich Simple",
+  "glassIce": "Collins w/ crushed ice"
+}]
