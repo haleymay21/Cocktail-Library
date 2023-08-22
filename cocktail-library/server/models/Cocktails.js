@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+const Ingredients = require("./Ingredients");
+const Liquor = require("./Liquor");
 
 const cocktailsSchema = new Schema(
   {
@@ -9,14 +11,8 @@ const cocktailsSchema = new Schema(
     created: {
       type: String,
     },
-    base: [{
-      type: Schema.Types.ObjectId,
-      ref:"liquor"
-    }],
-    ingredients: [{
-      type: Schema.Types.ObjectId,
-      ref:"ingredients"
-    }],
+    base: [Liquor.schema],
+    ingredients: [Ingredients.schema],
     build: {
       type: String,
     },
