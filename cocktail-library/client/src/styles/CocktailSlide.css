@@ -18,11 +18,15 @@ body {
   list-style: none;
 }
 
-/* .slide {
+.slide {
   position: absolute;
   inset: 0;
   opacity: 0;
-} */
+}
+
+.slide[data-active] {
+  opacity: 1;
+}
 
 .card {
   display: inline-block;
@@ -30,10 +34,6 @@ body {
   max-width: 32rem;
   max-height: 33rem;
   min-height: 33rem;
-}
-
-.index4 {
-  opacity: 1;
 }
 
 .carousel-button {
