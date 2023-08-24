@@ -12,12 +12,59 @@ body {
   position: relative;
 }
 
-.slide {
+.carousel > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* .slide {
   position: absolute;
   inset: 0;
   opacity: 0;
+} */
+
+.card {
+  display: inline-block;
+  min-width: 32rem;
+  max-width: 32rem;
+  max-height: 33rem;
+  min-height: 33rem;
 }
 
 .index4 {
-    opacity: 1;
+  opacity: 1;
+}
+
+.carousel-button {
+  position: absolute;
+  z-index: 2;
+  background: none;
+  border: none;
+  font-size: 4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(25, 24, 24, 0.5);
+  cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.carousel-button:hover,
+.carousel-button:focus {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.carousel-button:focus {
+  outline: 1px solid black;
+}
+
+.carousel-button.prev {
+  left: 1rem;
+}
+
+.carousel-button.next {
+  right: 1rem;
 }
