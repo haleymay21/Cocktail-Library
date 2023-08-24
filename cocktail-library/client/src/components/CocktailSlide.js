@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import "../styles/CocktailSlide.css";
 import { useQuery } from "@apollo/client";
 import { FIND_COCKTAILS } from "../utils/queries";
@@ -9,11 +9,12 @@ const CocktailSlide = () => {
   const cocktailsData = data?.cocktails || [];
   console.log(cocktailsData);
 
-  // shuffle data into new array called newList //
+  // shuffle data into new array called cocktailsShuffled //
   const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
-  const newList = shuffle(cocktailsData);
-  console.log(newList);
+  const cocktailsShuffled = shuffle(cocktailsData);
+  console.log(cocktailsShuffled);
 
+  // uses buttons to create carousel //
   const buttons = document.querySelectorAll("[data-carousel-button]");
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -22,6 +23,7 @@ const CocktailSlide = () => {
         .closest("[data-carousel]")
         .querySelector("[data-slides]");
 
+      // converts slides to array, uses index to move carousel back and forth //
       const activeSlide = slides.querySelector("[data-active]");
       let newIndex = [...slides.children].indexOf(activeSlide) + offset;
       if (newIndex < 0) newIndex = slides.children.length - 1;
@@ -36,21 +38,24 @@ const CocktailSlide = () => {
     <>
       <section aria-label="cocktail-slide">
         <div className="carousel" data-carousel>
-          <button className="carousel-button prev" data-carousel-button="prev">
-            &#8678;
-          </button>
-          <button className="carousel-button next" data-carousel-button="next">
+          <Button className="carousel-button next" data-carousel-button="next">
             &#8680;
-          </button>
+          </Button>
+          <Button className="carousel-button prev" data-carousel-button="prev">
+            &#8678;
+          </Button>
+
           <ul data-slides>
-            {newList.map((cocktailsData) => {
-              const i = newList.indexOf(cocktailsData);
-              return newList.length - 1 === i ? (
+            {cocktailsShuffled.map((cocktailsData) => {
+              const cocktailIndex = cocktailsShuffled.indexOf(cocktailsData);
+              return cocktailsShuffled.length - 1 === cocktailIndex ? (
                 <li className="slide" data-active>
                   <Card>
                     <div className="card-body">
                       <h5 className="card-title">{cocktailsData.name}</h5>
-                      <h6 className="card-subtitle mb-2 text-muted">{i}</h6>
+                      <h6 className="card-subtitle mb-2 text-muted">
+                        {cocktailIndex}
+                      </h6>
                       <p className="card-text">
                         Some quick example text to build on the card title and
                         make up the bulk of the card's content.
@@ -63,7 +68,9 @@ const CocktailSlide = () => {
                   <Card>
                     <div className="card-body">
                       <h5 className="card-title">{cocktailsData.name}</h5>
-                      <h6 className="card-subtitle mb-2 text-muted">{i}</h6>
+                      <h6 className="card-subtitle mb-2 text-muted">
+                        {cocktailIndex}
+                      </h6>
                       <p className="card-text">
                         this one is the else statement
                       </p>

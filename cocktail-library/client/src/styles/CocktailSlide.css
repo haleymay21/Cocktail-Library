@@ -22,27 +22,34 @@ body {
   position: absolute;
   inset: 0;
   opacity: 0;
+  transition: 250ms opacity ease-in-out;
+  transition-delay: 250ms;
 }
 
 .slide[data-active] {
   opacity: 1;
+  transition-delay: 0ms;
+  z-index: 1;
 }
 
 .card {
-  display: inline-block;
   min-width: 32rem;
   max-width: 32rem;
   max-height: 33rem;
   min-height: 33rem;
+  float: right;
+  margin-right: 10rem;
 }
 
 .carousel-button {
-  position: absolute;
+  position: relative;
+  float: right;
+  margin-right: 10rem;
   z-index: 2;
   background: none;
   border: none;
-  font-size: 4rem;
-  top: 50%;
+  font-size: 1.5rem;
+  top: 45%;
   transform: translateY(-50%);
   color: rgba(25, 24, 24, 0.5);
   cursor: pointer;
@@ -62,9 +69,9 @@ body {
 }
 
 .carousel-button.prev {
-  left: 1rem;
+  right: 16.5rem;
 }
 
 .carousel-button.next {
-  right: 1rem;
+  right: 0.5rem;
 }
