@@ -10,6 +10,11 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
+  min-width: 32rem;
+  max-width: 32rem;
+  max-height: 33rem;
+  min-height: 33rem;
+  float: right;
 }
 
 .carousel > ul {
@@ -22,8 +27,8 @@ body {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: 250ms opacity ease-in-out;
-  transition-delay: 250ms;
+  transition: 200ms opacity ease-in-out;
+  transition-delay: 200ms;
 }
 
 .slide[data-active] {
@@ -39,6 +44,7 @@ body {
   min-height: 33rem;
   float: right;
   margin-right: 10rem;
+  border-radius: 1rem;
 }
 
 .carousel-button {

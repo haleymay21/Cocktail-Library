@@ -9,6 +9,9 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 import Home from "./pages/Home";
+import SearchByName from "./pages/SearchByName";
+import SearchByIng from "./pages/SearchByIng";
+import BartendersChoice from "./pages/BartendersChoice";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -41,6 +44,10 @@ function App() {
         <>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/searchbyname" element={<SearchByName />} />
+            <Route path="/searchbying" element={<SearchByIng />} />
+            <Route path="/bartenderschoice" element={<BartendersChoice />} />
+
             <Route path="*" element={<h1 Name="display-2">Wrong page!</h1>} />
           </Routes>
         </>

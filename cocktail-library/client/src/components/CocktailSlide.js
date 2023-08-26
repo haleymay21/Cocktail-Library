@@ -39,10 +39,10 @@ const CocktailSlide = () => {
       <section aria-label="cocktail-slide">
         <div className="carousel" data-carousel>
           <Button className="carousel-button next" data-carousel-button="next">
-            &#8680;
+            &#8250;
           </Button>
           <Button className="carousel-button prev" data-carousel-button="prev">
-            &#8678;
+            &#8249;
           </Button>
 
           <ul data-slides>
