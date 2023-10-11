@@ -13,6 +13,7 @@ import SearchByName from "./pages/SearchByName";
 import SearchByIng from "./pages/SearchByIng";
 import BartendersChoice from "./pages/BartendersChoice";
 
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -47,6 +48,7 @@ function App() {
             <Route path="/searchbyname" element={<SearchByName />} />
             <Route path="/searchbying" element={<SearchByIng />} />
             <Route path="/bartenderschoice" element={<BartendersChoice />} />
+
 
             <Route path="*" element={<h1 Name="display-2">Wrong page!</h1>} />
           </Routes>

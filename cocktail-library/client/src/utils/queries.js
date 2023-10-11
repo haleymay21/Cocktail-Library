@@ -22,3 +22,14 @@ export const FIND_COCKTAILS_NAME = gql`
     }
   }
 `;
+
+export const FIND_ING_AND_LIQ_NAME = gql`
+  {
+    ingredients {
+      name
+    }
+    liquor {
+      name
+    }
+  }
+`;

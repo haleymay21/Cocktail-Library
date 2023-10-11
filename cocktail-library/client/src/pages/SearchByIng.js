@@ -1,13 +1,17 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import IngSearchBar from "../components/IngSearchBar";
+// import LiquorSearchBar from "../components/LiquorsSearchBar";
+
 
 import "../styles/SearchByIng.css";
 
 const SearchByIng = () => {
   return (
     <>
-      <Container fluid>Search by ingredients page</Container>
-    </>
+ <div className="search-bar-container">
+        <IngSearchBar />
+        <div>searchResults</div>
+      </div>    </>
   );
 };
 
