@@ -7,9 +7,7 @@ import { FIND_COCKTAILS_NAME } from "../utils/queries";
 
 const NameSearchBar = () => {
   const [filteredResults, setFilteredResults] = useState([]); // Define filteredResults in state
-
   const [searchTerm, setSearchTerm] = useState("");
-
   const { loading, error, data } = useQuery(FIND_COCKTAILS_NAME);
 
   if (loading) return <p>Loading...</p>;
