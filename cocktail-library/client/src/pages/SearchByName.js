@@ -1,12 +1,14 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-
+import NameSearchBar from "../components/NameSearchBar";
 import "../styles/SearchByName.css";
 
 const SearchByName = () => {
   return (
     <>
-      <Container fluid>search by name page</Container>
+      <div className="search-bar-container">
+        <NameSearchBar />
+        <div>searchResults</div>
+      </div>
     </>
   );
 };

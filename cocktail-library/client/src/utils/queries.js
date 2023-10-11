@@ -14,3 +14,11 @@ export const FIND_COCKTAILS = gql`
     }
   }
 `;
+
+export const FIND_COCKTAILS_NAME = gql`
+  {
+    cocktails {
+      name
+    }
+  }
+`;
