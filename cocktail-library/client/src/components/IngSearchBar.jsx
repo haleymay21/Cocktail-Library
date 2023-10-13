@@ -4,51 +4,45 @@ import "../styles/SearchByIng.css";
 import { useQuery } from "@apollo/client";
 import Select from "react-select"; // Import react-select
 
-
 import { FIND_ING_AND_LIQ_NAME } from "../utils/queries";
 
 const IngSearchBar = () => {
-  const [filteredResults, setFilteredResults] = useState([]); // Define filteredResults in state
-  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedValues, setSelectedValues] = useState([]); // Store selected values in state
   const { loading, error, data } = useQuery(FIND_ING_AND_LIQ_NAME);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const ingredientNames = data.ingredients.map((ingredient) => ingredient.name);
-  const liquorNames = data.liquor.map((liquor) => liquor.name);
+  const ingredientOptions = data.ingredients.map((ingredient) => ({
+    value: ingredient.name,
+    label: ingredient.name,
+  }));
+  const liquorOptions = data.liquor.map((liquor) => ({
+    value: liquor.name,
+    label: liquor.name,
+  }));
 
-
-  const handleSearch = (e) => {
-    const term = e.target.value;
-    setSearchTerm(term);
-
-    // Filter the ingredient names based on the search term
-    const filteredResults =  [...ingredientNames, ...liquorNames].filter((name) =>
-      name.toLowerCase().includes(term.toLowerCase())
-    );
-
-    setFilteredResults(filteredResults); // Update the state with filtered results
+  const handleChange = (selectedOptions) => {
+    setSelectedValues(selectedOptions);
   };
 
   return (
     <>
       <div className="input-wrapper">
         <FaSearch id="search-icon" />
-        <input
-          type="text"
-          placeholder="Search by Ingredient Name"
-          value={searchTerm}
-          onChange={handleSearch}
+        <Select
+          isMulti
+          options={[...ingredientOptions, ...liquorOptions]}
+          value={selectedValues}
+          onChange={handleChange}
+          placeholder="Search by Ingredients or Liquor Name"
         />
-        {/* Conditional rendering of the <ul> */}
-        {filteredResults.length > 0 && (
-          <ul>
-            {filteredResults.map((result, index) => (
-              <li key={index}>{result}</li>
-            ))}
-          </ul>
-        )}
+           {/* Display selected values */}
+           {/* <div>
+          {selectedValues.map((option) => (
+            <span key={option.value}>{option.label}</span>
+          ))}
+        </div> */}
       </div>
     </>
   );

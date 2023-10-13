@@ -1,7 +1,6 @@
 import React from "react";
 import IngSearchBar from "../components/IngSearchBar";
-// import LiquorSearchBar from "../components/LiquorsSearchBar";
-
+ 
 
 import "../styles/SearchByIng.css";
 
