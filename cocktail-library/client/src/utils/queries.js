@@ -15,6 +15,21 @@ export const FIND_COCKTAILS = gql`
   }
 `;
 
+export const GET_COCKTAIL = gql`
+  {
+    cocktail(name: $name) {
+      _id
+      name
+      created
+      build
+      glassIce
+      garnish
+      lowABV
+      recipe
+    }
+  }
+`;
+
 export const FIND_COCKTAILS_NAME = gql`
   {
     cocktails {
