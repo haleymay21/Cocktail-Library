@@ -30,6 +30,7 @@ const typeDefs = gql`
     ingredients: [Ingredients]
     cocktails: [Cocktails]
     liquor: [Liquor]
+    cocktail(name: String!): Cocktails
   }
 `;
 

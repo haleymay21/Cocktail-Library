@@ -1,71 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { FaSearch } from "react-icons/fa";
 import "../styles/SearchByName.css";
-import { useQuery } from "@apollo/client";
-import client from "../App"
+import { useQuery, useLazyQuery } from "@apollo/client";
+
 import { FIND_COCKTAILS_NAME } from "../utils/queries";
-import { GET_COCKTAIL } from "../utils/queries"; // Replace with the actual query
+import { GET_COCKTAIL } from "../utils/queries";
 
 const NameSearchBar = () => {
-  const [filteredResults, setFilteredResults] = useState([]); // Define filteredResults in state
+  const [filteredResults, setFilteredResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const { loading: loadingQuery1, error: errorQuery1, data: dataQuery1 } = useQuery(FIND_COCKTAILS_NAME);
-  const { loading: loadingQuery2, error: errorQuery2, data: dataQuery2 } = useQuery(GET_COCKTAIL);
+  const [cocktailResults, setCocktailResults] = useState();
+  const { loading, error, data } = useQuery(FIND_COCKTAILS_NAME);
+  const [getCocktail, { loadingSearch, errorSearch, data: dataSearch }] =
+    useLazyQuery(GET_COCKTAIL);
 
-  if (loadingQuery1 || loadingQuery2) {
-    return <p>Loading...</p>;
-  }
+  // useEffect(() => {
+  //   console.log("Cocktail data:", dataSearch);
+  // }, [dataSearch]);
 
-  if (errorQuery1 || errorQuery2) {
-    return (
-      <>
-        {errorQuery1 && <p>Error in Query 1: {errorQuery1.message}</p>}
-        {errorQuery2 && <p>Error in Query 2: {errorQuery2.message}</p>}
-      </>
-    );
-  }
+  if (loading || loadingSearch) return <p>Loading...</p>;
+  if (error || errorSearch) return <p>Error: {error.message}</p>;
 
-  const cocktailNames = dataQuery1.cocktails.map((cocktail) => cocktail.name);
+  const cocktailNames = data.cocktails.map((cocktail) => cocktail.name);
 
   const handleSearch = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
 
-    // Filter the cocktail names based on the search term
     const filteredResults = cocktailNames.filter((name) =>
       name.toLowerCase().includes(term.toLowerCase())
     );
 
-    setFilteredResults(filteredResults); // Update the state with filtered results
+    setFilteredResults(filteredResults);
   };
 
   const handleSelect = (selectedOption) => {
     setSearchTerm(selectedOption);
     setFilteredResults([]); // Clear the autocomplete list
   };
+  console.log(searchTerm);
 
   const handleRetrieveCocktail = async () => {
-    const { data } = await client.query({
-      query: GET_COCKTAIL, // Your GraphQL query for retrieving a specific cocktail
-      variables: { name: searchTerm }, // Pass the selected cocktail name as a variable
-    });
+    const res = await getCocktail({ variables: { name: searchTerm } });
 
-    // Handle the retrieved data (e.g., log it to the console)
-    console.log("Cocktail data:", data);
+    console.log("12", res.data);
+    setCocktailResults(res.data);
   };
+
 
   return (
     <>
       <div className="input-wrapper">
+        <FaSearch id="search-icon" />
         <input
           type="text"
           placeholder="Search by Cocktail Name"
           value={searchTerm}
           onChange={handleSearch}
-        />{" "}
-        <Button onClick={handleRetrieveCocktail}><FaSearch id="search-icon" /></Button>
-        {/* Conditional rendering of the <ul> */}
+        />
+        <Button onClick={handleRetrieveCocktail}>
+          <FaSearch id="search-icon" />
+        </Button>
+        
         {filteredResults.length > 0 && (
           <ul>
             {filteredResults.map((result, index) => (
@@ -73,12 +70,15 @@ const NameSearchBar = () => {
                 key={index}
                 onClick={() => handleSelect(result)} // Add click handler to set the selected option
               >
-                <Button>{result}</Button>
+                {result}
               </li>
             ))}
           </ul>
         )}
       </div>
+      <div>{cocktailResults && (
+        <h1>{cocktailResults.cocktail.name}</h1>
+      )}</div>
     </>
   );
 };

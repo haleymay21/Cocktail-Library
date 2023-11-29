@@ -16,8 +16,8 @@ export const FIND_COCKTAILS = gql`
 `;
 
 export const GET_COCKTAIL = gql`
-  {
-    cocktail(name: $name) {
+ query getCocktail($name: String!) {
+  cocktail(name: $name) {
       _id
       name
       created
@@ -29,6 +29,7 @@ export const GET_COCKTAIL = gql`
     }
   }
 `;
+
 
 export const FIND_COCKTAILS_NAME = gql`
   {

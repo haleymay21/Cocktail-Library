@@ -21,6 +21,19 @@ const resolvers = {
       console.log(allCocktails);
       return allCocktails;
     },
+
+    cocktail: async (parent, { name }, context, info) => {
+      // Use Mongoose to query the MongoDB database for a cocktail by name
+      try {
+        const cocktail = await Cocktails.findOne(
+          { name },
+          { name: 1, created: 1 }
+        );
+        return cocktail;
+      } catch (error) {
+        throw new Error(`Error fetching cocktail by name: ${error.message}`);
+      }
+    },
   },
 };
 

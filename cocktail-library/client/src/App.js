@@ -50,6 +50,7 @@ function App() {
             <Route path="/bartenderschoice" element={<BartendersChoice />} />
 
 
+
             <Route path="*" element={<h1 Name="display-2">Wrong page!</h1>} />
           </Routes>
         </>
